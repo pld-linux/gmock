@@ -13,6 +13,7 @@ BuildRequires:	automake
 BuildRequires:	gtest-devel >= 1.5.0
 BuildRequires:	libtool
 BuildRequires:	python
+Requires:	gtest-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
