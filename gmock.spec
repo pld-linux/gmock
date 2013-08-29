@@ -1,7 +1,7 @@
 Summary:	Google C++ Mocking Framework
 Name:		gmock
 Version:	1.6.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Libraries
 Source0:	https://googlemock.googlecode.com/files/%{name}-%{version}.zip
@@ -62,6 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gmock-config
 %{_includedir}/%{name}
 %{_npkgconfigdir}/*
+%dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/generator
 %attr(755,root,root) %{_datadir}/%{name}/generator/gmock_gen.py
 %dir %{_datadir}/%{name}/generator/cpp
