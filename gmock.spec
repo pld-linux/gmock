@@ -1,7 +1,7 @@
 Summary:	Google C++ Mocking Framework
 Name:		gmock
 Version:	1.6.0
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Libraries
 Source0:	https://googlemock.googlecode.com/files/%{name}-%{version}.zip
@@ -14,11 +14,20 @@ BuildRequires:	gtest-devel >= 1.5.0
 BuildRequires:	libtool
 BuildRequires:	python
 BuildRequires:	sed >= 4.0
-Requires:	gtest-devel
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+Google C++ Mocking Framework.
+
+%package devel
+Summary:	Google C++ Mocking Framework
+Group:		Development/Libraries
+Requires:	gtest-devel >= 1.5.0
+Provides:	%{name} = %{version}-%{release}
+Obsoletes:	gmock < 1.6.0-3
+
+%description devel
 Inspired by jMock, EasyMock, and Hamcrest, and designed with C++'s
 specifics in mind, Google C++ Mocking Framework (or Google Mock for
 short) is a library for writing and using C++ mock classes.
@@ -59,10 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
-
-%files
+%files devel
 %defattr(644,root,root,755)
 %doc CHANGES CONTRIBUTORS COPYING README
 %attr(755,root,root) %{_bindir}/gmock-config
