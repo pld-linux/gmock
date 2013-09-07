@@ -14,6 +14,7 @@ BuildRequires:	gtest-devel >= 1.5.0
 BuildRequires:	libtool
 BuildRequires:	python
 Requires:	gtest-devel
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,7 +40,9 @@ Google Mock:
 %{__autoconf}
 %{__automake}
 %{__autoheader}
-%configure
+%configure \
+	--host=%{_host} \
+	--build=%{_host}
 %{__make}
 
 %install
@@ -47,6 +50,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	INSTALL="%{__install} -p" \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/gmock/generator/{README.cppclean,COPYING,README}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -59,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGES CONTRIBUTORS COPYING README
 %attr(755,root,root) %{_bindir}/gmock-config
 %{_includedir}/%{name}
-%{_npkgconfigdir}/*
+%{_npkgconfigdir}/gmock.pc
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/generator
 %attr(755,root,root) %{_datadir}/%{name}/generator/gmock_gen.py
