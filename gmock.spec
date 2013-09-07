@@ -22,14 +22,13 @@ specifics in mind, Google C++ Mocking Framework (or Google Mock for
 short) is a library for writing and using C++ mock classes.
 
 Google Mock:
-
- o lets you create mock classes trivially using simple macros,
- o supports a rich set of matchers and actions,
- o handles unordered, partially ordered, or completely ordered
-   expectations,
- o is extensible by users, and
- o works on Linux, Mac OS X, Windows, Windows Mobile, minGW, and
-   Symbian.
+- lets you create mock classes trivially using simple macros,
+- supports a rich set of matchers and actions,
+- handles unordered, partially ordered, or completely ordered
+  expectations,
+- is extensible by users, and
+- works on Linux, Mac OS X, Windows, Windows Mobile, minGW, and
+  Symbian.
 
 %prep
 %setup -q
@@ -41,12 +40,10 @@ Google Mock:
 %{__automake}
 %{__autoheader}
 %configure
-
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} -j1 install \
 	INSTALL="%{__install} -p" \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -54,8 +51,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
