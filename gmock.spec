@@ -13,6 +13,7 @@ BuildRequires:	automake
 BuildRequires:	gtest-devel >= 1.5.0
 BuildRequires:	libtool
 BuildRequires:	python
+BuildRequires:	sed >= 4.0
 Requires:	gtest-devel
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,6 +35,8 @@ Google Mock:
 %prep
 %setup -q
 %patch0 -p1
+
+grep -rl bin/env scripts | xargs %{__sed} -i -e '1s,^#!.*python,#!%{__python},'
 
 %build
 %{__aclocal}
