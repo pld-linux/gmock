@@ -1,9 +1,11 @@
 Summary:	Google C++ Mocking Framework
+Summary(pl.UTF-8):	Szkielet Google Mock dla C++
 Name:		gmock
 Version:	1.6.0
 Release:	3
 License:	BSD
 Group:		Development/Libraries
+#Source0Download: http://code.google.com/p/googlemock/downloads/list
 Source0:	https://googlemock.googlecode.com/files/%{name}-%{version}.zip
 # Source0-md5:	f547f47321ca88d3965ca2efdcc2a3c1
 Patch0:		install.patch
@@ -18,10 +20,36 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Google C++ Mocking Framework.
+Inspired by jMock, EasyMock, and Hamcrest, and designed with C++'s
+specifics in mind, Google C++ Mocking Framework (or Google Mock for
+short) is a library for writing and using C++ mock classes.
+
+Google Mock:
+- lets you create mock classes trivially using simple macros,
+- supports a rich set of matchers and actions,
+- handles unordered, partially ordered, or completely ordered
+  expectations,
+- is extensible by users, and
+- works on Linux, Mac OS X, Windows, Windows Mobile, minGW, and
+  Symbian.
+
+%description -l pl.UTF-8
+Google C++ Mocking Framework (w skrócie Google Mock) to zainspirowana
+przez jMock, EasyMock i Hamcrest, zaprojektowana z myślą o specyfice
+C++ biblioteka do pisania i wykorzystywania klas "mock" w C++.
+
+Google Mock:
+- pozwala tworzyć klasy "mock" w sposób trywialny przy użyciu makr;
+- obsługuje bogaty zbiór dopasowań i akcji;
+- obsługuje oczekiwania nieuporządkowane, częściowo uporządkowane
+  lub w pełni uporządkowane;
+- jest rozszerzalna dla użytkownika;
+- działa na Linuksie, Mac OS X, Windows, Windows Mobile, minGW oraz
+  Symbianie.
 
 %package devel
 Summary:	Google C++ Mocking Framework
+Summary(pl.UTF-8):	Szkielet Google Mock dla C++
 Group:		Development/Libraries
 Requires:	gtest-devel >= 1.5.0
 Provides:	%{name} = %{version}-%{release}
@@ -40,6 +68,20 @@ Google Mock:
 - is extensible by users, and
 - works on Linux, Mac OS X, Windows, Windows Mobile, minGW, and
   Symbian.
+
+%description devel -l pl.UTF-8
+Google C++ Mocking Framework (w skrócie Google Mock) to zainspirowana
+przez jMock, EasyMock i Hamcrest, zaprojektowana z myślą o specyfice
+C++ biblioteka do pisania i wykorzystywania klas "mock" w C++.
+
+Google Mock:
+- pozwala tworzyć klasy "mock" w sposób trywialny przy użyciu makr;
+- obsługuje bogaty zbiór dopasowań i akcji;
+- obsługuje oczekiwania nieuporządkowane, częściowo uporządkowane
+  lub w pełni uporządkowane;
+- jest rozszerzalna dla użytkownika;
+- działa na Linuksie, Mac OS X, Windows, Windows Mobile, minGW oraz
+  Symbianie.
 
 %prep
 %setup -q
