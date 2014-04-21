@@ -1,20 +1,21 @@
 Summary:	Google C++ Mocking Framework
 Summary(pl.UTF-8):	Szkielet Google Mock dla C++
 Name:		gmock
-Version:	1.6.0
-Release:	3
+Version:	1.7.0
+Release:	1
 License:	BSD
 Group:		Development/Libraries
 #Source0Download: http://code.google.com/p/googlemock/downloads/list
 Source0:	https://googlemock.googlecode.com/files/%{name}-%{version}.zip
-# Source0-md5:	f547f47321ca88d3965ca2efdcc2a3c1
+# Source0-md5:	073b984d8798ea1594f5e44d85b20d66
 Patch0:		install.patch
 URL:		http://code.google.com/p/googlemock/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gtest-devel >= 1.5.0
-BuildRequires:	libtool
-BuildRequires:	python
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	gtest-devel >= 1.7.0
+BuildRequires:	libstdc++-devel
+BuildRequires:	libtool >= 2:1.5
+BuildRequires:	python >= 2.3
 BuildRequires:	sed >= 4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,7 +52,8 @@ Google Mock:
 Summary:	Google C++ Mocking Framework
 Summary(pl.UTF-8):	Szkielet Google Mock dla C++
 Group:		Development/Libraries
-Requires:	gtest-devel >= 1.5.0
+Requires:	gtest-devel >= 1.7.0
+Requires:	libstdc++-devel
 Provides:	%{name} = %{version}-%{release}
 Obsoletes:	gmock < 1.6.0-3
 
@@ -90,10 +92,11 @@ Google Mock:
 grep -rl bin/env scripts | xargs %{__sed} -i -e '1s,^#!.*python,#!%{__python},'
 
 %build
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%{__automake}
 %{__autoheader}
+%{__automake}
 %configure \
 	--host=%{_host} \
 	--build=%{_host}
@@ -105,14 +108,14 @@ rm -rf $RPM_BUILD_ROOT
 	INSTALL="%{__install} -p" \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/gmock/generator/{README.cppclean,COPYING,README}
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/gmock/generator/{README.cppclean,LICENSE,README}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc CHANGES CONTRIBUTORS COPYING README
+%doc CHANGES CONTRIBUTORS LICENSE README
 %attr(755,root,root) %{_bindir}/gmock-config
 %{_includedir}/%{name}
 %{_npkgconfigdir}/gmock.pc
