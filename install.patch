@@ -48,7 +48,7 @@ index adc21d7..2077654 100644
                        scripts/fuse_gmock_files.py
  	mkdir -p "$(srcdir)/fused-src"
  	chmod -R u+w "$(srcdir)/fused-src"
-@@ -200,10 +206,8 @@ CLEANFILES = core
+@@ -200,10 +206,9 @@ CLEANFILES = core
  # Mock can lead to undefined behavior due to violation of the
  # One-Definition Rule.
  
@@ -60,10 +60,11 @@ index adc21d7..2077654 100644
 -	echo "'make install' is dangerous and not supported. Instead, see README for how to integrate Google Mock into your build system."
 -	false
 +install-exec-hook:
-+	mkdir -p $(DESTDIR)$(datadir)/@PACKAGE@ $(DESTDIR)$(prefix)/src/@PACKAGE@
++	mkdir -p $(DESTDIR)$(datadir)/@PACKAGE@ $(DESTDIR)$(prefix)/src/@PACKAGE@/src
 +	cp -rf scripts/generator $(DESTDIR)$(datadir)/@PACKAGE@
-+	cp -f src/* $(DESTDIR)$(prefix)/src/@PACKAGE@
-+	sed -i s/src[/]//g $(DESTDIR)$(prefix)/src/@PACKAGE@/gmock-all.cc
++	cp -f src/* $(DESTDIR)$(prefix)/src/@PACKAGE@/src
++	cp -f CMakeLists.txt $(DESTDIR)$(prefix)/src/@PACKAGE@
++	sed -i s/src[/]//g $(DESTDIR)$(prefix)/src/@PACKAGE@/src/gmock-all.cc
 diff --git a/configure.ac b/configure.ac
 index e8b65bd..9ec7743 100644
 --- a/configure.ac
