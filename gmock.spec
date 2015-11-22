@@ -1,9 +1,3 @@
-%ifarch x32
-%define	build_arch %{_target_platform}
-%else
-%define	build_arch %{_host}
-%endif
-
 Summary:	Google C++ Mocking Framework
 Summary(pl.UTF-8):	Szkielet Google Mock dla C++
 Name:		gmock
@@ -25,6 +19,12 @@ BuildRequires:	python >= 2.3
 BuildRequires:	sed >= 4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%ifarch x32
+%define	build_arch %{_target_platform}
+%else
+%define	build_arch %{_host}
+%endif
 
 %description
 Inspired by jMock, EasyMock, and Hamcrest, and designed with C++'s
