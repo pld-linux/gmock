@@ -1,8 +1,14 @@
+%ifarch x32
+%define	build_arch %{_target_platform}
+%else
+%define	build_arch %{_host}
+%endif
+
 Summary:	Google C++ Mocking Framework
 Summary(pl.UTF-8):	Szkielet Google Mock dla C++
 Name:		gmock
 Version:	1.7.0
-Release:	3
+Release:	4
 License:	BSD
 Group:		Development/Libraries
 #Source0Download: http://code.google.com/p/googlemock/downloads/list
@@ -98,8 +104,8 @@ grep -rl bin/env scripts | xargs %{__sed} -i -e '1s,^#!.*python,#!%{__python},'
 %{__autoheader}
 %{__automake}
 %configure \
-	--host=%{_host} \
-	--build=%{_host}
+	--host=%{build_arch} \
+	--build=%{build_arch}
 %{__make}
 
 %install
