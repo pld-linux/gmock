@@ -20,7 +20,7 @@ BuildRequires:	sed >= 4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%ifarch x32
+%if %{_host_cpu} == "x32"
 %define	build_arch %{_target_platform}
 %else
 %define	build_arch %{_host}
