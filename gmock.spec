@@ -5,11 +5,12 @@ Version:	1.7.0
 Release:	4
 License:	BSD
 Group:		Development/Libraries
-#Source0Download: http://code.google.com/p/googlemock/downloads/list
+#Source0Download: https://github.com/google/googlemock/releases
+#Source0:	https://github.com/google/googlemock/archive/release-%{version}/%{name}-%{version}.tar.gz
 Source0:	https://googlemock.googlecode.com/files/%{name}-%{version}.zip
 # Source0-md5:	073b984d8798ea1594f5e44d85b20d66
 Patch0:		install.patch
-URL:		http://code.google.com/p/googlemock/
+URL:		https://github.com/google/googlemock
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gtest-devel >= 1.7.0
