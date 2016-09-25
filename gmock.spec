@@ -1,8 +1,9 @@
+# NOTE: for versions > 1.7.0 see gtest.spec
 Summary:	Google C++ Mocking Framework
 Summary(pl.UTF-8):	Szkielet Google Mock dla C++
 Name:		gmock
 Version:	1.7.0
-Release:	4
+Release:	4.1
 License:	BSD
 Group:		Development/Libraries
 #Source0Download: https://github.com/google/googlemock/releases
