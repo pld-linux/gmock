@@ -95,7 +95,7 @@ Google Mock:
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 grep -rl bin/env scripts | xargs %{__sed} -i -e '1s,^#!.*python,#!%{__python},'
 
